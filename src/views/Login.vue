@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex';
+import ajaxMtd from "@/utils/ajax";
+
 export default {
   name: "Login",
   data() {
@@ -65,18 +68,28 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapState(['logged_usr'])
+  },
   methods: {
+    ...mapMutations(['save_usr']),
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
+      this.$refs[formName].validate(async valid => {
+        if (!valid) {
           console.log('error submit!!');
           return false;
         }
+        const data = await ajaxMtd('/login', this.loginForm, 'POST');//发送请求验证用户名、密码
+        if (data.status === 0) {//登陆成功
+          this.save_usr(data);
+          this.$router.replace('/');
+        } else {
+          this.$message.error("登陆失败，请检查用户名和密码是否正确");
+          this.save_usr(null);
+        }
       });
     }
-  }
+  },
 }
 </script>
 
