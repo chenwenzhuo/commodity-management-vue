@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import {
-    Form, FormItem, Button, Input,
+    Form, FormItem, Button, Input, Message
 } from "element-ui";
 
 Vue.use(Button);
 Vue.use(Input);
 Vue.use(Form);
 Vue.use(FormItem);
+
+Vue.prototype.$message = Message;

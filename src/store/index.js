@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import UserModel from './UserModel';
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -9,10 +11,12 @@ export default new Vuex.Store({
     },
     getters: {},
     mutations: {
-        set_usr(state, value) {
+        save_usr(state, value) {
             state.logged_usr = value;
         },
     },
     actions: {},
-    modules: {}
+    modules: {
+        UserModel
+    }
 })
