@@ -16,7 +16,10 @@
                     prefix-icon="el-icon-lock" placeholder="密码"></el-input>
         </el-form-item>
         <el-form-item label-width="0">
-          <el-button class="login-btn" type="primary" @click="submitForm('loginForm')">提交</el-button>
+          <el-button class="login-btn" type="primary" native-type="submit"
+                     @click="submitForm('loginForm')">
+            提交
+          </el-button>
         </el-form-item>
       </el-form>
     </div>
