@@ -7,8 +7,12 @@
       <el-header style="height: 80px">
         <TopBar/>
       </el-header>
-      <el-main>Main</el-main>
-      <el-footer>Footer</el-footer>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
+      <el-footer style="height: 60px" class="footer">
+        推荐使用谷歌浏览器，可获得更佳浏览体验
+      </el-footer>
     </el-container>
   </el-container>
 </template>
@@ -38,8 +42,16 @@ export default {
   height: 100%;
 }
 
-.el-header, .el-footer {
+.el-header {
   padding: 0;
+}
+
+.el-footer {
+  padding: 0;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #969696;
 }
 
 .el-aside {
