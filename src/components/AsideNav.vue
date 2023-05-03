@@ -73,4 +73,10 @@ export default {
     color: #ffffff;
   }
 }
+
+//修改选中菜单项的背景色
+.el-menu-item.is-active {
+  color: #6681FA;
+  background-color: #3d986e !important;
+}
 </style>
