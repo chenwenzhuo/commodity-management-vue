@@ -82,9 +82,9 @@ export default {
           console.log('error submit!!');
           return false;
         }
-        const data = await ajaxMtd('/login', this.loginForm, 'POST');//发送请求验证用户名、密码
-        if (data.status === 0) {//登陆成功
-          this.save_usr(data);
+        const response = await ajaxMtd('/login', this.loginForm, 'POST');//发送请求验证用户名、密码
+        if (response.status === 0) {//登陆成功
+          this.save_usr(response.data);
           this.$router.replace('/');
         } else {
           this.$message.error("登陆失败，请检查用户名和密码是否正确");
