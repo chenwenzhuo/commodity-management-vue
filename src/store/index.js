@@ -9,13 +9,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        logged_usr: null//已登陆用户的相关数据
+        logged_usr: null,//已登陆用户的相关数据
+        time: Date.now(),//系统当前时间
     },
     getters: {},
     mutations: {
         save_usr(state, value) {
             state.logged_usr = value;
         },
+        clear_usr(state) {
+            state.logged_usr = null;
+        },
+        update_time(state, value) {
+            state.time = value;
+        }
     },
     actions: {},
     modules: {

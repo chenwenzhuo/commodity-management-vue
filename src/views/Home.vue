@@ -4,7 +4,9 @@
       <AsideNav/>
     </el-aside>
     <el-container>
-      <el-header>Header</el-header>
+      <el-header style="height: 80px">
+        <TopBar/>
+      </el-header>
       <el-main>Main</el-main>
       <el-footer>Footer</el-footer>
     </el-container>
@@ -15,10 +17,11 @@
 import {mapState} from 'vuex';
 
 import AsideNav from "@/components/AsideNav";
+import TopBar from "@/components/TopBar";
 
 export default {
   name: "Home",
-  components: {AsideNav},
+  components: {AsideNav, TopBar},
   computed: {
     ...mapState({curUser: 'logged_usr'}),//获取vuex中存储的当前已登陆用户
   },
@@ -36,10 +39,10 @@ export default {
 }
 
 .el-header, .el-footer {
-  background-color: #B3C0D1;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
+  //background-color: #B3C0D1;
+  //color: #333;
+  //text-align: center;
+  padding: 0;
 }
 
 .el-aside {
