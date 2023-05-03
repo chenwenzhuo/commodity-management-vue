@@ -38,14 +38,21 @@
 </template>
 
 <script>
-import {mapMutations} from "vuex";
+import {mapMutations, mapState} from "vuex";
 
 export default {
   name: "AsideNav",
+  computed: {
+    ...mapState(['active_menu_index'])
+  },
   methods: {
-    ...mapMutations(['set_active_menu']),
+    ...mapMutations(['set_active_menu', 'set_active_menu_index']),
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+      //若当前选中的是已激活的菜单，则不进行处理
+      if (this.active_menu_index === key) {
+        return;
+      }
+      this.set_active_menu_index(key);//保存菜单的index
       switch (key) {
         case '1':
           this.set_active_menu('首页');

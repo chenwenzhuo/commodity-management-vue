@@ -12,6 +12,7 @@ export default new Vuex.Store({
         logged_usr: null,//已登陆用户的相关数据
         time: Date.now(),//系统当前时间
         active_menu: '首页',//当前激活的菜单名称，默认激活首页
+        active_menu_index: '1'
     },
     getters: {},
     mutations: {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
         },
         set_active_menu(state, value) {
             state.active_menu = value;
+        },
+        set_active_menu_index(state, value) {
+            state.active_menu_index = value;
         }
     },
     actions: {},
