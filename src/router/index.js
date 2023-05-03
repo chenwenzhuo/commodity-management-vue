@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from "@/views/Login";
 import store from "@/store";
+
+import Login from "@/views/Login";
+import HomePage from "@/views/HomePage";
 
 Vue.use(VueRouter)
 
@@ -22,6 +24,7 @@ const routes = [
     {
         path: '/',
         name: 'home',
+        redirect: '/home',//设置默认子路由为/home
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
@@ -34,6 +37,9 @@ const routes = [
             }
             next();
         },
+        children: [
+            {path: 'home', component: HomePage},
+        ]
     }
 ]
 
