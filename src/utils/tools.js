@@ -14,3 +14,17 @@ export const formatTime = milliseconds => {
     return d.getFullYear() + '-' + month + '-' + day + ' ' +
         hour + '-' + minute + '-' + second;
 }
+
+export const getUrlParams = url => {
+    const flagIndex = url.indexOf('?');
+    if (flagIndex < 0) {
+        return {};//url中不包含问号，直接返回空对象
+    }
+    const paramsObj = {};
+    let params = url.substring(flagIndex + 1).split('&');
+    for (const p in params) {
+        const curParam = params[p].split('=');
+        paramsObj[curParam[0]] = curParam[1];
+    }
+    return paramsObj;
+}
