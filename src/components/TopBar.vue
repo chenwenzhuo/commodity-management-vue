@@ -5,7 +5,7 @@
       <button @click="logout">退出登陆</button>
     </div>
     <div class="lower">
-      <span class="route-name">首页</span>
+      <span class="route-name">{{ active_menu }}</span>
       <span class="time">{{ time }}</span>
     </div>
   </div>
@@ -24,7 +24,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['logged_usr', 'time'])
+    ...mapState(['logged_usr', 'time', 'active_menu'])
   },
   methods: {
     ...mapMutations(['clear_usr', 'update_time']),

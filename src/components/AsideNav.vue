@@ -7,8 +7,6 @@
     <el-menu
         default-active="1"
         style="text-align: left"
-        @open="handleOpen"
-        @close="handleClose"
         @select="handleSelect"
         background-color="#0e1520"
         text-color="#ffffff"
@@ -40,17 +38,31 @@
 </template>
 
 <script>
+import {mapMutations} from "vuex";
+
 export default {
   name: "AsideNav",
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    },
+    ...mapMutations(['set_active_menu']),
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
+      switch (key) {
+        case '1':
+          this.set_active_menu('首页');
+          break;
+        case '2-1':
+          this.set_active_menu('品类管理');
+          break;
+        case '2-2':
+          this.set_active_menu('商品管理');
+          break;
+        case '3':
+          this.set_active_menu('用户管理');
+          break;
+        case '4':
+          this.set_active_menu('角色管理');
+          break;
+      }
     }
   }
 }
