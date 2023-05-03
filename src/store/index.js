@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+//vuex-persistedstate用于vuex中数据持久化存储
+import createPersistedState from 'vuex-persistedstate'
 
 import UserModel from './UserModel';
 
@@ -18,5 +20,14 @@ export default new Vuex.Store({
     actions: {},
     modules: {
         UserModel
-    }
+    },
+    //应用插件
+    plugins: [createPersistedState({
+        storage: window.sessionStorage,//存储到session storage
+        reducer(state) {
+            return {//仅持久化logged_usr
+                logged_usr: state.logged_usr
+            }
+        }
+    })]
 })
