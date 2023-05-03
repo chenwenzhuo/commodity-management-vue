@@ -47,18 +47,16 @@ export default {
   },
   methods: {
     ...mapMutations(['set_active_menu', 'set_active_menu_index']),
-    handleSelect(key, keyPath) {
-      //若当前选中的是已激活的菜单，则不进行处理
-      if (this.active_menu_index === key) {
-        return;
-      }
+    handleSelect(key) {
       this.set_active_menu_index(key);//保存菜单的index
       switch (key) {
         case '1':
           this.set_active_menu('首页');
+          this.$router.push('/home');
           break;
         case '2-1':
           this.set_active_menu('品类管理');
+          this.$router.push('/category');
           break;
         case '2-2':
           this.set_active_menu('商品管理');
@@ -71,7 +69,10 @@ export default {
           break;
       }
     }
-  }
+  },
+  mounted() {
+    this.handleSelect(this.active_menu_index);
+  },
 }
 </script>
 

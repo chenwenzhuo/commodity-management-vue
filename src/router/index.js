@@ -4,8 +4,15 @@ import store from "@/store";
 
 import Login from "@/views/Login";
 import HomePage from "@/views/HomePage";
+import Category from "@/views/Category";
 
 Vue.use(VueRouter)
+
+// 解决重复点击路由报错的BUG
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch((err) => err);
+}
 
 const routes = [
     {
@@ -24,7 +31,6 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        redirect: '/home',//设置默认子路由为/home
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
@@ -39,6 +45,7 @@ const routes = [
         },
         children: [
             {path: 'home', component: HomePage},
+            {path: 'category', component: Category},
         ]
     }
 ]
