@@ -7,12 +7,12 @@
         <i class="el-icon-right"></i>
         <span class="cust-table-title">{{ parentCateName }}</span>
       </div>
-      <el-button type="primary" icon="el-icon-plus">
+      <el-button type="primary" icon="el-icon-plus" @click="handleAddCate">
         添加分类
       </el-button>
     </div>
     <el-table
-        :data="categoryData"
+        :data="parentCateId==='0'?categoryData:subCategoryData"
         height="680"
         border
         style="width: 100%">
@@ -43,6 +43,26 @@
         <el-button type="primary" @click="modifyCateName">确 定</el-button>
       </div>
     </el-dialog>
+    <el-dialog title="添加分类" :visible="dialogVisible===2" width="30%">
+      <el-form ref="addCateForm" :model="addCateForm" :rules="addCateFormRules">
+        <el-form-item prop="parentId" label="所属分类">
+          <el-select v-model="addCateForm.parentId" placeholder="请选择" style="width: 320px">
+            <el-option key="0" label="一级分类" value="0">
+            </el-option>
+            <el-option v-for="item in categoryData" :key="item._id"
+                       :label="item.name" :value="item._id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item prop="categoryName" label="分类名称">
+          <el-input v-model="addCateForm.categoryName" auto-complete="off" style="width: 320px"/>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible=0">取 消</el-button>
+        <el-button type="primary" @click="addCate">确 定</el-button>
+      </div>
+    </el-dialog>
   </el-card>
 </template>
 
@@ -55,11 +75,17 @@ export default {
     return {
       parentCateId: '0',//当前展示的分类的父分类id，默认展示一级分类，父分类id为0
       parentCateName: '',//当前展示的分类的父分类名称
-      categoryData: [],//表格数据
+      categoryData: [],//一级分类表格数据
+      subCategoryData: [],//二级分类表格数据
       dialogVisible: 0,//弹窗是否可见。0-不可见
       targetCategory: null,//待修改/删除的分类信息
       modCateForm: {newCateName: ''},
-      modCateFormRules: {newCateName: [{required: true, message: '请输入分类名称', trigger: 'blur'}]}
+      modCateFormRules: {newCateName: [{required: true, message: '请输入分类名称', trigger: 'blur'}]},
+      addCateForm: {parentId: '', categoryName: ''},
+      addCateFormRules: {
+        parentId: [{required: true, message: '请选择所属分类', trigger: 'blur'}],
+        categoryName: [{required: true, message: '请输入分类名称', trigger: 'blur'}]
+      }
     }
   },
   methods: {
@@ -71,7 +97,11 @@ export default {
         return;
       }
       //获取分类成功，更新数据
-      this.categoryData = response.data;
+      if (this.parentCateId === '0') {
+        this.categoryData = response.data;
+      } else {
+        this.subCategoryData = response.data;
+      }
     },
     handleModifyCateName(row) {
       this.targetCategory = row;
@@ -129,6 +159,27 @@ export default {
       this.parentCateName = '';
       this.reqCategories();
     },
+    handleAddCate() {
+      this.dialogVisible = 2;
+    },
+    addCate() {
+      this.$refs.addCateForm.validate(async valid => {
+        if (!valid) {
+          return;
+        }
+        const response = await ajaxMtd('/manage/category/add', {
+          parentId: this.addCateForm.parentId,
+          categoryName: this.addCateForm.categoryName
+        }, 'POST');
+        if (response.status === 0) {
+          this.$message.success('添加分类成功');
+          this.reqCategories();
+          this.dialogVisible = 0;
+        } else {
+          this.$message.error('添加分类失败');
+        }
+      })
+    }
   },
   mounted() {
     //组件挂载时发送请求查询分类数据

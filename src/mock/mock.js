@@ -53,7 +53,7 @@ Mock.mock(/manage\/category\/list/, options => {
     }
 });
 
-//修改商品名称
+//修改分类名称
 Mock.mock(/manage\/category\/update/, options => {
     const reqData = JSON.parse(options.body);//获取post请求数据
     categories.forEach(item => {
@@ -68,5 +68,17 @@ Mock.mock(/manage\/category\/update/, options => {
 Mock.mock(/manage\/category\/delete/, options => {
     const reqData = JSON.parse(options.body);//获取post请求数据
     categories = categories.filter(item => item._id !== reqData.categoryId);
+    return {status: 0};
+});
+
+//添加商品分类
+Mock.mock(/manage\/category\/add/, options => {
+    const reqData = JSON.parse(options.body);//获取post请求数据
+    const newCateObj = {
+        _id: nanoid(),
+        name: reqData.categoryName,
+        parentId: reqData.parentId
+    };
+    categories.push(newCateObj);
     return {status: 0};
 });

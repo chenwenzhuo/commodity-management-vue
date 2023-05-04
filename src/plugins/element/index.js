@@ -5,7 +5,7 @@ import {
     Container, Header, Aside, Main, Footer,
     Menu, MenuItem, Submenu,
     Card, Table, TableColumn,
-    Dialog
+    Dialog, Select, Option
 } from "element-ui";
 
 Vue.use(Button);
@@ -24,6 +24,8 @@ Vue.use(Card);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Dialog);
+Vue.use(Select);
+Vue.use(Option);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$msgbox = MessageBox;
