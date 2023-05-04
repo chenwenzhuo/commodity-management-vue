@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import {
-    Form, FormItem, Button, Input, Message,
+    Message, MessageBox,
+    Form, FormItem, Button, Input,
     Container, Header, Aside, Main, Footer,
     Menu, MenuItem, Submenu,
     Card, Table, TableColumn,
@@ -25,3 +26,7 @@ Vue.use(TableColumn);
 Vue.use(Dialog);
 
 Vue.prototype.$message = Message;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;

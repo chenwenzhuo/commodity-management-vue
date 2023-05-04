@@ -35,7 +35,7 @@ Mock.mock(/logout/, options => {
 });
 
 //查询商品品类
-const categories = [
+let categories = [
     {_id: nanoid(), name: '大家电', parentId: '0'},
     {_id: nanoid(), name: '小家电', parentId: '0'},
     {_id: nanoid(), name: '调味品', parentId: '0'},
@@ -61,5 +61,12 @@ Mock.mock(/manage\/category\/update/, options => {
             item.name = reqData.categoryName;
         }
     });
+    return {status: 0};
+});
+
+//删除商品分类
+Mock.mock(/manage\/category\/delete/, options => {
+    const reqData = JSON.parse(options.body);//获取post请求数据
+    categories = categories.filter(item => item._id !== reqData.categoryId);
     return {status: 0};
 });
