@@ -1,7 +1,12 @@
 <template>
   <el-card class="box-card">
     <div slot="header" class="card-title">
-      <span>一级分类列表</span>
+      <span v-if="parentCateId==='0'">一级分类列表</span>
+      <div v-else>
+        <button class="op-btn cust-table-title" @click="backToMainList">一级分类列表</button>
+        <i class="el-icon-right"></i>
+        <span class="cust-table-title">{{ parentCateName }}</span>
+      </div>
       <el-button type="primary" icon="el-icon-plus">
         添加分类
       </el-button>
@@ -21,7 +26,8 @@
           label="操作">
         <template v-slot="scope">
           <el-button @click="handleModifyCateName(scope.row)">修改分类名称</el-button>
-          <el-button>查看子分类</el-button>
+          <!--仅当展示一级分类时，显示查看子分类按钮-->
+          <el-button v-if="parentCateId==='0'" @click="handleViewSubCate(scope.row)">查看子分类</el-button>
           <el-button @click="handleDeleteCate(scope.row)">删除分类</el-button>
         </template>
       </el-table-column>
@@ -48,9 +54,10 @@ export default {
   data() {
     return {
       parentCateId: '0',//当前展示的分类的父分类id，默认展示一级分类，父分类id为0
+      parentCateName: '',//当前展示的分类的父分类名称
       categoryData: [],//表格数据
       dialogVisible: 0,//弹窗是否可见。0-不可见
-      targetCateId: '',//待修改/删除的分类id
+      targetCategory: null,//待修改/删除的分类信息
       modCateForm: {newCateName: ''},
       modCateFormRules: {newCateName: [{required: true, message: '请输入分类名称', trigger: 'blur'}]}
     }
@@ -67,7 +74,7 @@ export default {
       this.categoryData = response.data;
     },
     handleModifyCateName(row) {
-      this.targetCateId = row._id;
+      this.targetCategory = row;
       this.dialogVisible = 1;
     },
     modifyCateName() {
@@ -76,7 +83,7 @@ export default {
           return;
         }
         const response = await ajaxMtd('/manage/category/update', {
-          categoryId: this.targetCateId,
+          categoryId: this.targetCategory._id,
           categoryName: this.modCateForm.newCateName
         }, 'POST');
         if (response.status !== 0) {
@@ -85,32 +92,43 @@ export default {
         }
         this.reqCategories();//修改成功，重新查询数据
         this.dialogVisible = 0;
-        this.targetCateId = '';
+        this.targetCategory = null;
         this.modCateForm = {newCateName: ''};
       })
     },
     handleDeleteCate(row) {
-      this.targetCateId = row._id;//保存待删除的分类id
-      console.log('-----------------targetCateId delete', this.targetCateId);
+      this.targetCategory = row;//保存待删除的分类id
       this.$confirm('确认删除当前分类？', '提示', {
         confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning'
       }).then(async () => {
         //点击确认的回调
         const response = await ajaxMtd('/manage/category/delete', {
-          categoryId: this.targetCateId
+          categoryId: this.targetCategory._id
         }, 'POST');
         if (response.status === 0) {
           this.$message.success('删除分类成功！');
-          this.targetCateId = '';
+          this.targetCategory = null;
           this.reqCategories();//删除成功后重新查询数据
         } else {
           this.$message.error('删除分类失败，请稍后重试！');
         }
       }).catch(() => {
         //点击取消的回调
-        this.targetCateId = '';
-      })
-    }
+        this.targetCategory = null;
+      });
+    },
+    handleViewSubCate(row) {
+      this.targetCategory = row;
+      this.parentCateId = row._id;
+      this.parentCateName = row.name;
+      //查询子分类数据
+      this.reqCategories();
+    },
+    backToMainList() {
+      this.parentCateId = '0';
+      this.parentCateName = '';
+      this.reqCategories();
+    },
   },
   mounted() {
     //组件挂载时发送请求查询分类数据
@@ -144,6 +162,11 @@ export default {
       color: #1DA57A;
       cursor: pointer;
     }
+  }
+
+  .cust-table-title {
+    font-size: 18px;
+    margin: 0;
   }
 }
 </style>
