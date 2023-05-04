@@ -20,4 +20,13 @@ body, html {
   width: 100%;
   height: 100%;
 }
+
+.op-btn {
+  margin: 0 18px;
+  padding: 0;
+  border: 0;
+  background-color: rgba(255, 255, 255, 0);
+  color: #1DA57A;
+  cursor: pointer;
+}
 </style>
