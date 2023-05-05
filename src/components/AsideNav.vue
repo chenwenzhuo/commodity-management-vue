@@ -60,6 +60,7 @@ export default {
           break;
         case '2-2':
           this.set_active_menu('商品管理');
+          this.$router.push('/product');
           break;
         case '3':
           this.set_active_menu('用户管理');

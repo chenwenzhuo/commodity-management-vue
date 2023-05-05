@@ -5,6 +5,8 @@ import store from "@/store";
 import Login from "@/views/Login";
 import HomePage from "@/views/HomePage";
 import Category from "@/views/Category";
+import Product from "@/views/product/Product";
+import ProductHome from "@/views/product/ProductHome";
 
 Vue.use(VueRouter)
 
@@ -46,6 +48,11 @@ const routes = [
         children: [
             {path: 'home', component: HomePage},
             {path: 'category', component: Category},
+            {
+                path: 'product', component: Product, children: [
+                    {path: '', component: ProductHome}
+                ]
+            }
         ]
     }
 ]
