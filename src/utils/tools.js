@@ -25,7 +25,7 @@ export const getUrlParams = url => {
     let params = url.substring(flagIndex + 1).split('&');
     for (const p in params) {
         const curParam = params[p].split('=');
-        paramsObj[curParam[0]] = curParam[1];
+        paramsObj[curParam[0]] = decodeURIComponent(curParam[1]);
     }
     return paramsObj;
 }
