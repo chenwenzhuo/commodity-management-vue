@@ -86,8 +86,13 @@ Mock.mock(/manage\/category\/add/, options => {
 //查询商品信息
 let products = [
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg'],
         detail: '<p>空调品牌：<strong>Midea/美的</strong> 美的空调型号：<strong><em>KFR-26GW/N8ZJE3 </em></strong>' +
             '空调功率：<span style="color:#f32784"><span style="background-color:#fdda00">大1匹</span></span></p>' +
@@ -99,7 +104,7 @@ let products = [
             '202103-10-612300-70059712943064保修期：72个月</p><p>3C证书编号：2021010703374807</p>'
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg'],
         detail: '<p><span style="color:#fdda00"><span style="background-color:#003ba5">洗衣机品牌：Littleswan/小天鹅型号：' +
@@ -112,337 +117,338 @@ let products = [
             '<p>高度：850mm保修期：36个月<span style="color:#000000">3C证书编号：2018010705047832</span></p>'
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 2,//status，在售状态，1-在售，2-下架
+        _id: nanoid(),
+        categoryId: categories[0]._id,
+        pCategoryId: categories[3]._id,
+        name: '美的风锦大1匹空调',
+        price: 2899,
+        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE',
+        status: 1,//status，在售状态，1-在售，2-下架
         imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
     },
     {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
+        _id: nanoid(), categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
         desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 2,
         imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
     },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[3]._id, name: '美的风锦大1匹空调', price: 2899,
-        desc: '美的风锦大1匹空调三级变频除湿抽湿冷暖两用自清洁卧室挂机ZJE', status: 1,//status，在售状态，1-在售，2-下架
-        imgs: ['image-1669449503986.jpg', 'image-1669449509233.jpg', 'image-1669449512669.jpg']
-    },
-    {
-        categoryId: categories[0]._id, pCategoryId: categories[4]._id, name: '小天鹅洗衣机', price: 1999,
-        desc: '小天鹅洗衣机10kg全自动家用变频滚筒洗脱一体机 TG100V196WIDY', status: 1,
-        imgs: ['image-1669450510468.jpg', 'image-1669450513333.jpg']
-    }
 ];
 
+//分页查询商品
 Mock.mock(/manage\/product\/list/, options => {
     const reqData = getUrlParams(options.url);//获取get请求数据
     //检查参数是否有效
@@ -460,6 +466,7 @@ Mock.mock(/manage\/product\/list/, options => {
     };
 });
 
+//按关键词搜索商品
 Mock.mock(/manage\/product\/search/, options => {
     debugger
     const reqData = getUrlParams(options.url);//获取get请求数据
@@ -484,4 +491,15 @@ Mock.mock(/manage\/product\/search/, options => {
         status: 0,
         data: pageFilter(wantedProducts, reqData.pageNum, reqData.pageSize)
     }
+});
+
+//商品上架/下架
+Mock.mock(/manage\/product\/updateStatus/, options => {
+    const reqData = JSON.parse(options.body);//获取post请求数据
+    products.forEach(item => {
+        if (item._id === reqData.productId) {
+            item.status = reqData.status;
+        }
+    });
+    return {status: 0};
 });

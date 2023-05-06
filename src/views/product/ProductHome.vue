@@ -24,8 +24,7 @@
 
             <el-table-column label="状态" min-width="10%" align="center">
                 <template v-slot="scope">
-                    <span v-if="scope.row.status===1">在售</span>
-                    <span v-else>下架</span>
+                    {{ scope.row.status === 1 ? "在售" : "已下架" }}
                 </template>
             </el-table-column>
 
@@ -33,7 +32,9 @@
                 <template v-slot="scope">
                     <el-button @click="handleDetailClick">详情</el-button>
                     <el-button>修改</el-button>
-                    <el-button>下架</el-button>
+                    <el-button @click="handleUpdateStatus(scope.row)">
+                        {{ scope.row.status === 1 ? "下架" : "上架" }}
+                    </el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -115,6 +116,18 @@ export default {
         },
         handleDetailClick() {
             this.$router.push('/product/detail');
+        },
+        async handleUpdateStatus(row) {
+            const response = await ajaxMtd('/manage/product/updateStatus', {
+                productId: row._id,
+                status: (row.status === 1 ? 2 : 1)
+            }, 'POST');
+            if (response.status === 0) {
+                this.$message.success(`${row.status === 1 ? '下架' : '上架'}成功`);
+                this.reqProducts();//更新状态后重新查询商品信息
+            } else {
+                this.$message.error(`${row.status === 1 ? '下架' : '上架'}出错`);
+            }
         }
     },
     mounted() {
