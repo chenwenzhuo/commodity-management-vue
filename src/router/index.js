@@ -8,6 +8,7 @@ import Category from "@/views/Category";
 import Product from "@/views/product/Product";
 import ProductHome from "@/views/product/ProductHome";
 import ProductDetail from "@/views/product/ProductDetail.vue";
+import NotFound from "@/views/NotFound.vue";
 
 Vue.use(VueRouter)
 
@@ -54,7 +55,8 @@ const routes = [
                     {path: '', component: ProductHome},
                     {path: 'detail', component: ProductDetail}
                 ]
-            }
+            },
+            {path: '*', component: NotFound}
         ]
     }
 ]
