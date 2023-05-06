@@ -7,7 +7,7 @@
                     <el-option value="prodDesc" label="按描述搜索">按描述搜索</el-option>
                 </el-select>
                 <el-input v-model="searchKey" placeholder="请输入关键字"/>
-                <el-button type="primary" @click="searchProducts">搜索</el-button>
+                <el-button type="primary" @click="handleSearchClick">搜索</el-button>
             </div>
             <el-button type="primary" icon="el-icon-plus">添加商品</el-button>
         </div>
@@ -37,7 +37,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <el-pagination hide-on-single-page :page-size="pageSize"
+        <el-pagination hide-on-single-page :current-page="pageNum" :page-size="pageSize"
                        layout="prev, pager, next, sizes" :total="totalProducts"
                        :page-sizes="[5,10,20]" style="float: right"
                        @size-change="handleSizeChange"
@@ -73,25 +73,49 @@ export default {
                 this.$message.error('查询商品信息出错');
             }
         },
-        searchProducts() {
+        async searchProducts() {
+            const response = await ajaxMtd('/manage/product/search', {
+                pageNum: this.pageNum, pageSize: this.pageSize,
+                searchType: this.searchMtd,
+                productName: this.searchKey, productDesc: this.searchKey
+            });
+            if (response.status !== 0) {//查询出错，弹窗提示
+                this.$message.error(response.msg());
+                return;
+            }
+            //查询成功，更新数据
+            this.productData = response.data.list;
+            this.totalProducts = response.data.total;
+        },
+        handleSearchClick() {
+            this.pageNum = 1;//每次搜索，都将当前页码设为1
+            if (!this.searchKey) {//未输入关键词时，查询全部商品信息
+                this.reqProducts();
+                return;
+            }
+            this.searchProducts();//搜索商品信息
         },
         handleSizeChange(value) {
             this.pageSize = value;
+            //有搜索关键词，则搜索商品，否则直接查询
+            if (this.searchKey) {
+                this.searchProducts();
+            } else {
+                this.reqProducts();
+            }
         },
         handleCurrentChange(value) {
             this.pageNum = value;
+            //有搜索关键词，则搜索商品，否则直接查询
+            if (this.searchKey) {
+                this.searchProducts();
+            } else {
+                this.reqProducts();
+            }
         },
         handleDetailClick() {
             this.$router.push('/product/detail');
         }
-    },
-    watch: {
-        pageNum() {
-            this.reqProducts();
-        },
-        pageSize() {
-            this.reqProducts();
-        },
     },
     mounted() {
         this.reqProducts();//组件挂载时查询商品信息

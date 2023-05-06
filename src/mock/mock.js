@@ -459,3 +459,29 @@ Mock.mock(/manage\/product\/list/, options => {
         data: pageFilter(products, reqData.pageNum, reqData.pageSize)
     };
 });
+
+Mock.mock(/manage\/product\/search/, options => {
+    debugger
+    const reqData = getUrlParams(options.url);//获取get请求数据
+    //检查参数是否有效
+    if (!reqData.pageNum || reqData.pageNum <= 0 ||
+        !reqData.pageSize || reqData.pageSize <= 0 ||
+        (reqData.searchType !== 'prodName' && reqData.searchType !== 'prodDesc')) {
+        return {
+            status: 1,
+            msg: "请求参数不正确！"
+        }
+    }
+    let wantedProducts;
+    if (reqData.searchType === 'prodName') {
+        const rule = new RegExp(`^.*${reqData.productName}.*$`);
+        wantedProducts = products.filter(item => rule.test(item.name));
+    } else {
+        const rule = new RegExp(`^.*${reqData.productDesc}.*$`);
+        wantedProducts = products.filter(item => rule.test(item.desc));
+    }
+    return {
+        status: 0,
+        data: pageFilter(wantedProducts, reqData.pageNum, reqData.pageSize)
+    }
+});
