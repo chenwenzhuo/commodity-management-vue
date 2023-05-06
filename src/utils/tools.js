@@ -15,6 +15,7 @@ export const formatTime = milliseconds => {
         hour + '-' + minute + '-' + second;
 }
 
+//获取get请求URL中的参数
 export const getUrlParams = url => {
     const flagIndex = url.indexOf('?');
     if (flagIndex < 0) {
@@ -27,4 +28,21 @@ export const getUrlParams = url => {
         paramsObj[curParam[0]] = curParam[1];
     }
     return paramsObj;
+}
+
+//得到指定数组的分页信息对象
+export function pageFilter(arr, pageNum, pageSize) {
+    //将字符串形式的参数转为数字
+    pageNum = pageNum * 1;
+    pageSize = pageSize * 1;
+    //获取分页数据
+    const total = arr.length;
+    const pages = Math.floor((total + pageSize - 1) / pageSize); //向下取整
+    const start = pageSize * (pageNum - 1)
+    const end = (start + pageSize) <= total ? start + pageSize : total;
+    const list = [];
+    for (var i = start; i < end; i++) {
+        list.push(arr[i]);
+    }
+    return {pageNum, pageSize, total, pages, list}
 }

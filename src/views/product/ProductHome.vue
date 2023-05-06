@@ -11,7 +11,7 @@
             </div>
             <el-button type="primary" icon="el-icon-plus">添加商品</el-button>
         </div>
-        <el-table :data="productData" height="680" border style="width: 100%"
+        <el-table :data="productData" border style="width: 100%"
                   :header-cell-style="{'text-align':'center'}">
             <el-table-column prop="name" label="商品名称" min-width="20%">
             </el-table-column>
@@ -37,6 +37,12 @@
                 </template>
             </el-table-column>
         </el-table>
+        <el-pagination hide-on-single-page :page-size="pageSize"
+                       layout="prev, pager, next, sizes" :total="totalProducts"
+                       :page-sizes="[5,10,20]" style="float: right"
+                       @size-change="handleSizeChange"
+                       @current-change="handleCurrentChange">
+        </el-pagination>
     </el-card>
 </template>
 
@@ -51,6 +57,7 @@ export default {
             searchKey: '',//搜索商品的关键词
             pageNum: 1,
             pageSize: 5,
+            totalProducts: 0,//商品总数
             productData: [],//商品数据
         }
     },
@@ -60,16 +67,31 @@ export default {
                 pageNum: this.pageNum, pageSize: this.pageSize
             });
             if (response.status === 0) {
-                this.productData = response.data;
+                this.productData = response.data.list;
+                this.totalProducts = response.data.total;
             } else {
                 this.$message.error('查询商品信息出错');
             }
         },
         searchProducts() {
         },
-        handleDetailClick(){
+        handleSizeChange(value) {
+            this.pageSize = value;
+        },
+        handleCurrentChange(value) {
+            this.pageNum = value;
+        },
+        handleDetailClick() {
             this.$router.push('/product/detail');
         }
+    },
+    watch: {
+        pageNum() {
+            this.reqProducts();
+        },
+        pageSize() {
+            this.reqProducts();
+        },
     },
     mounted() {
         this.reqProducts();//组件挂载时查询商品信息
