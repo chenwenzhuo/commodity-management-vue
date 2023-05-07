@@ -56,17 +56,11 @@
                 <el-form-item label="商品详情">
                     <el-col :span="24">
                         <div style="border: 1px solid #ccc;">
-                            <Toolbar
-                                    style="border-bottom: 1px solid #ccc"
-                                    :editor="editor"
-                                    mode="default"
-                            />
-                            <Editor
-                                    style="height: 500px; overflow-y: hidden;"
+                            <Toolbar style="border-bottom: 1px solid #ccc"
+                                     :editor="editor" mode="default"/>
+                            <Editor style="height: 500px; overflow-y: hidden;"
                                     v-model="addUpdateForm.productDetail"
-                                    mode="default"
-                                    @onCreated="onCreated"
-                            />
+                                    mode="default" @onCreated="onCreated"/>
                         </div>
                     </el-col>
                 </el-form-item>
@@ -168,13 +162,13 @@ export default {
                     imgs: this.imagesList.map(item => item.name),
                     detail: this.addUpdateForm.productDetail
                 };
-                const reqUrl = '/manage/product/add';//请求URL
+                const reqUrl = '/manage/product/' + (this.productTemp ? 'add' : 'update');//请求URL
                 const response = await ajaxMtd(reqUrl, reqData, 'POST');
                 if (response.status === 0) {
-                    this.$message.success('添加商品成功');
+                    this.$message.success((this.productTemp ? '添加' : '修改') + '商品成功');
                     this.$router.replace('/product');
                 } else {
-                    this.$message.error('添加商品失败');
+                    this.$message.error((this.productTemp ? '添加' : '修改') + '商品失败');
                 }
             });
         },
