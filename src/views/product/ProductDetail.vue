@@ -33,7 +33,8 @@
                         </el-image>
                     </span>
                     <span v-else>
-                        <el-image v-for="(item,index) in imgs" :key="index" :src="'imgs/'+item">
+                        <el-image v-for="(item,index) in imgs" :key="index"
+                                  :src="'http://localhost:5001/upload/'+item">
                         </el-image>
                     </span>
                 </el-col>
