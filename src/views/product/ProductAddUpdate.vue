@@ -4,7 +4,8 @@
             <el-button type="text" icon="el-icon-back" @click="$router.go(-1)">
                 返回
             </el-button>
-            <span>添加商品</span>
+            <span v-if="productTemp===null">添加商品</span>
+            <span v-else>修改商品</span>
         </div>
         <div class="card-body">
             <el-form ref="addUpdateForm" :model="addUpdateForm">
@@ -99,6 +100,7 @@ export default {
             imagesList: [],
             categoryOptions: [],//级联选择器的选项数组
             editor: null,//富文本编辑器
+            productTemp: null,//更新商品时，暂存商品信息，在editor创建后使用
         }
     },
     methods: {
@@ -110,13 +112,12 @@ export default {
                 return;
             }
             //查询成功
-            this.initCascaderOptions(response.data, parentId);
+            return this.initCascaderOptions(response.data, parentId);
         },
         initCascaderOptions(categories, parentId) {
             if (parentId === 0) {//parentId为0，则当前categories数组为一级分类
                 this.categoryOptions = categories.map(item => {
                     return {
-                        parent: item.parentId,
                         value: item._id,
                         label: item.name,
                         children: []
@@ -129,28 +130,24 @@ export default {
                     }
                     fItem.children = categories.map(item => {
                         return {
-                            parent: item.parentId,
                             value: item._id,
                             label: item.name
                         }
                     });
                 });
             }
+            return this.categoryOptions;
         },
         handleCascaderChange(choice) {
             //由于cascader组件支持多选，故choice参数为数组，此处单选直接取下标0
             this.reqCategories(choice[0]);//查询子分类
         },
         handleImgsSuccess(file, fileList) {
-            console.log('-----------Success file', file);
-            console.log('-----------Success fileList', fileList);
             if (file.status === 0) {
                 this.imagesList.push(file.data);
             }
         },
         async handleImgsRemove(file, fileList) {
-            console.log('-----------Remove file', file);
-            console.log('-----------Remove fileList', fileList);
             if (file.status === 'success') {
                 const response = await ajaxMtd('/manage/img/delete', {name: file.name}, 'POST');
                 this.imagesList = this.imagesList.filter(item => item.name !== file.name);
@@ -183,10 +180,30 @@ export default {
         },
         onCreated(editor) {
             this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
+            //创建editor后，将商品详情赋值给addUpdateForm.productDetail
+            this.addUpdateForm.productDetail = this.productTemp.detail;
         },
     },
     mounted() {
-        this.reqCategories(0);//组件挂载时查询一级分类信息
+        //检查是否传递了商品参数
+        const productInfo = this.$route.query;
+        if (productInfo.name) {//productInfo不为空对象，则当前为修改商品
+            this.addUpdateForm.productName = productInfo.name;
+            this.addUpdateForm.productDesc = productInfo.desc;
+            this.addUpdateForm.productPrice = productInfo.price;
+            this.addUpdateForm.categories = [productInfo.pCategoryId, productInfo.categoryId];
+            this.imagesList = productInfo.imgs.map((img, index) => ({
+                uid: -index,
+                name: img,
+                status: "done",
+                url: 'http://localhost:5001/upload/' + img
+            }));
+            this.productTemp = productInfo;
+            //若为修改商品，查询一级分类后再查询二级分类
+            this.reqCategories(0).then(result => result.forEach(item => this.reqCategories(item.value)));
+        } else {
+            this.reqCategories(0);//若为添加商品，组件挂载时查询一级分类信息
+        }
     },
     beforeDestroy() {
         const editor = this.editor

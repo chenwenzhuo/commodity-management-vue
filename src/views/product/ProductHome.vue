@@ -34,7 +34,7 @@
             <el-table-column label="操作" min-width="20%" align="center">
                 <template v-slot="scope">
                     <el-button @click="handleDetailClick(scope.row)">详情</el-button>
-                    <el-button>修改</el-button>
+                    <el-button @click="handleUpdateProduct(scope.row)">修改</el-button>
                     <el-button @click="handleUpdateStatus(scope.row)">
                         {{ scope.row.status === 1 ? "下架" : "上架" }}
                     </el-button>
@@ -137,7 +137,13 @@ export default {
         },
         handleAddProduct() {
             this.$router.push('/product/add_update');
-        }
+        },
+        handleUpdateProduct(row) {
+            this.$router.push({
+                path: '/product/add_update',
+                query: row
+            });
+        },
     },
     mounted() {
         this.reqProducts();//组件挂载时查询商品信息
