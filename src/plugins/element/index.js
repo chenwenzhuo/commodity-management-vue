@@ -4,7 +4,8 @@ import {
     Form, FormItem, Button, Input,
     Container, Header, Aside, Main, Footer,
     Menu, MenuItem, Submenu, Card, Table, TableColumn,
-    Dialog, Select, Option, Pagination
+    Dialog, Select, Option, Pagination, Row, Col,
+    Image
 } from "element-ui";
 
 Vue.use(Button);
@@ -26,6 +27,9 @@ Vue.use(Dialog);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Pagination);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Image);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$msgbox = MessageBox;

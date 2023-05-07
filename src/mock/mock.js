@@ -468,7 +468,6 @@ Mock.mock(/manage\/product\/list/, options => {
 
 //按关键词搜索商品
 Mock.mock(/manage\/product\/search/, options => {
-    debugger
     const reqData = getUrlParams(options.url);//获取get请求数据
     //检查参数是否有效
     if (!reqData.pageNum || reqData.pageNum <= 0 ||
@@ -502,4 +501,19 @@ Mock.mock(/manage\/product\/updateStatus/, options => {
         }
     });
     return {status: 0};
+});
+
+Mock.mock(/manage\/category\/info/, options => {
+    const reqData = getUrlParams(options.url);//获取get请求数据
+    let wantedCategory = null;
+    for (let i = 0; i < categories.length; i++) {
+        if (categories[i]._id === reqData.categoryId) {
+            wantedCategory = categories[i];
+            break;
+        }
+    }
+    if (wantedCategory) {
+        return {status: 0, data: wantedCategory}
+    }
+    return {status: 1, msg: "指定分类不存在"}
 });
