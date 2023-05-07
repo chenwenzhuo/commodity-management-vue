@@ -9,7 +9,10 @@
                 <el-input v-model="searchKey" placeholder="请输入关键字"/>
                 <el-button type="primary" @click="handleSearchClick">搜索</el-button>
             </div>
-            <el-button type="primary" icon="el-icon-plus">添加商品</el-button>
+            <el-button type="primary" icon="el-icon-plus"
+                       @click="handleAddProduct">
+                添加商品
+            </el-button>
         </div>
         <el-table :data="productData" border style="width: 100%"
                   :header-cell-style="{'text-align':'center'}">
@@ -131,6 +134,9 @@ export default {
             } else {
                 this.$message.error(`${row.status === 1 ? '下架' : '上架'}出错`);
             }
+        },
+        handleAddProduct() {
+            this.$router.push('/product/add_update');
         }
     },
     mounted() {

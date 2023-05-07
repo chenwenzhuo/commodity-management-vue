@@ -8,6 +8,7 @@ import Category from "@/views/Category";
 import Product from "@/views/product/Product";
 import ProductHome from "@/views/product/ProductHome";
 import ProductDetail from "@/views/product/ProductDetail.vue";
+import ProductAddUpdate from "@/views/product/ProductAddUpdate.vue";
 import NotFound from "@/views/NotFound.vue";
 
 Vue.use(VueRouter)
@@ -53,7 +54,8 @@ const routes = [
             {
                 path: 'product', component: Product, children: [
                     {path: '', component: ProductHome},
-                    {path: 'detail', component: ProductDetail}
+                    {path: 'detail', component: ProductDetail},
+                    {path: 'add_update', component: ProductAddUpdate}
                 ]
             },
             {path: '*', component: NotFound}
