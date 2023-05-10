@@ -21,9 +21,7 @@
                     label="分类名称"
                     width="640">
             </el-table-column>
-            <el-table-column
-                    prop="address"
-                    label="操作">
+            <el-table-column label="操作">
                 <template v-slot="scope">
                     <el-button @click="handleModifyCateName(scope.row)">修改分类名称</el-button>
                     <!--仅当展示一级分类时，显示查看子分类按钮-->
