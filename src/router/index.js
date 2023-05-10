@@ -10,6 +10,7 @@ import ProductHome from "@/views/product/ProductHome";
 import ProductDetail from "@/views/product/ProductDetail.vue";
 import ProductAddUpdate from "@/views/product/ProductAddUpdate.vue";
 import Role from "@/views/Role.vue";
+import User from "@/views/User.vue";
 import NotFound from "@/views/NotFound.vue";
 
 Vue.use(VueRouter)
@@ -60,6 +61,7 @@ const routes = [
                 ]
             },
             {path: 'role', component: Role},
+            {path: 'user', component: User},
             {path: '*', component: NotFound}
         ]
     }

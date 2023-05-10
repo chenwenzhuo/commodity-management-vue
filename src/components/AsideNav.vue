@@ -64,6 +64,7 @@ export default {
                     break;
                 case '3':
                     this.set_active_menu('用户管理');
+                    this.$router.push('/user');
                     break;
                 case '4':
                     this.set_active_menu('角色管理');
