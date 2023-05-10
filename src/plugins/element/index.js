@@ -5,7 +5,7 @@ import {
     Container, Header, Aside, Main, Footer,
     Menu, MenuItem, Submenu, Card, Table, TableColumn,
     Dialog, Select, Option, Pagination, Row, Col,
-    Image, Cascader, Upload
+    Image, Cascader, Upload, Tree
 } from "element-ui";
 
 Vue.use(Button);
@@ -33,6 +33,7 @@ Vue.use(Col);
 Vue.use(Image);
 Vue.use(Cascader);
 Vue.use(Upload);
+Vue.use(Tree);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$msgbox = MessageBox;
