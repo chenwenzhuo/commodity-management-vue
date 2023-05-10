@@ -1,4 +1,6 @@
 export const formatTime = milliseconds => {
+    if (!milliseconds) return '';
+
     const d = new Date(milliseconds);
     let month = d.getMonth() + 1;
     month = month >= 10 ? month : ('0' + month);//单位数月份前补0
