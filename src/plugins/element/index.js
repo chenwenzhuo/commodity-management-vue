@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import {
     Message, MessageBox,
-    Form, FormItem, Button, Input,
+    Form, FormItem, Button, Input, Radio,
     Container, Header, Aside, Main, Footer,
     Menu, MenuItem, Submenu, Card, Table, TableColumn,
     Dialog, Select, Option, Pagination, Row, Col,
@@ -10,6 +10,7 @@ import {
 
 Vue.use(Button);
 Vue.use(Input);
+Vue.use(Radio);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Container);

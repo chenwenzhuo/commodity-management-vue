@@ -9,6 +9,7 @@ import Product from "@/views/product/Product";
 import ProductHome from "@/views/product/ProductHome";
 import ProductDetail from "@/views/product/ProductDetail.vue";
 import ProductAddUpdate from "@/views/product/ProductAddUpdate.vue";
+import Role from "@/views/Role.vue";
 import NotFound from "@/views/NotFound.vue";
 
 Vue.use(VueRouter)
@@ -58,6 +59,7 @@ const routes = [
                     {path: 'add_update', component: ProductAddUpdate}
                 ]
             },
+            {path: 'role', component: Role},
             {path: '*', component: NotFound}
         ]
     }
