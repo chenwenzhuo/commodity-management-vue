@@ -119,7 +119,6 @@ export default {
             }
         },
         handleRowClick(curRow) {
-            console.log('----------------curRow', curRow);
             //若当前有一行被选中，且此次点击的是选中的行，则取消选中
             if (this.tableRadio !== '' && this.tableRadio === curRow.index) {
                 this.$refs.roleTable.setCurrentRow();
@@ -166,7 +165,6 @@ export default {
                 nextTick(() => this.$refs.authTree.setCheckedKeys(this.selectedRow.menus));
                 return;
             }
-            console.log('---------------tree checked keys', this.$refs.authTree.getCheckedKeys(true));
             const response = await ajaxMtd('/manage/role/update', {
                 _id: this.selectedRow._id,
                 menus: this.$refs.authTree.getCheckedKeys(true),
