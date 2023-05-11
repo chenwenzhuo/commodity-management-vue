@@ -20,8 +20,8 @@
             </el-table-column>
             <el-table-column label="操作" align="center">
                 <template v-slot="scope">
-                    <el-button class="oprt-btn">修改</el-button>
-                    <el-button class="oprt-btn">删除</el-button>
+                    <el-button class="oprt-btn" @click="handleUpdateUser(scope.row)">修改</el-button>
+                    <el-button class="oprt-btn" @click="handleDeleteUser(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -36,7 +36,7 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
-                <el-row type="flex" justify="left">
+                <el-row type="flex" justify="left" v-if="add_update_flag==='add'">
                     <el-col :span="22">
                         <el-form-item prop="password" label="密码" label-width="80px"
                                       :rules="[{required:true,message:'密码不能为空'}]">
@@ -48,8 +48,8 @@
                 <el-row type="flex" justify="left">
                     <el-col :span="22">
                         <el-form-item prop="phone" label="手机号" label-width="80px"
-                                      :rules="[{required:true,message:'手机号不能为空'}]">
-                            <el-input type="phone" placeholder="请输入手机号"
+                                      :rules="[{required:true,message:'手机号不能为空'},{validator:validatePhone}]">
+                            <el-input type="text" placeholder="请输入手机号"
                                       v-model="userForm.phone" autocomplete="off"/>
                         </el-form-item>
                     </el-col>
@@ -58,7 +58,7 @@
                     <el-col :span="22">
                         <el-form-item prop="email" label="邮箱" label-width="80px"
                                       :rules="[{required:true,message:'邮箱不能为空'}]">
-                            <el-input type="email" placeholder="请输入邮箱"
+                            <el-input type="text" placeholder="请输入邮箱"
                                       v-model="userForm.email" autocomplete="off"/>
                         </el-form-item>
                     </el-col>
@@ -79,7 +79,7 @@
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="hideDialog">取 消</el-button>
-                <el-button type="primary" @click="addUser">确 定</el-button>
+                <el-button type="primary" @click="handleConfirmAddUpdate">确 定</el-button>
             </div>
         </el-dialog>
     </el-card>
@@ -88,6 +88,7 @@
 <script>
 import ajaxMtd from '@/utils/ajax';
 import {formatTime} from "@/utils/tools";
+import {nextTick} from "vue";
 
 export default {
     name: "User",
@@ -97,6 +98,7 @@ export default {
             roleData: [],//所有角色数据
             dialogVisible: 0,//弹窗是否可见
             add_update_flag: '',//弹窗用于添加/修改用户的标志位
+            selectedUserId: '',//修改用户时，此用户的id
             userForm: {//用户表单的数据
                 username: '',
                 password: '',
@@ -128,18 +130,118 @@ export default {
             this.roleData = response.data.roles;
         },
         handleAddUser() {
+            //弹窗未打开时打开弹窗
             if (this.dialogVisible === 0) {
                 this.dialogVisible = 1;
+                this.add_update_flag = 'add';
                 return;
             }
+            this.$refs.userForm.validate(async valid => {
+                if (!valid)
+                    return;
+                const response = await ajaxMtd('/manage/user/add', {
+                    username: this.userForm.username,
+                    password: this.userForm.password,
+                    phone: this.userForm.phone,
+                    email: this.userForm.email,
+                    role_id: this.userForm.role_id
+                }, 'POST');
+                if (response.status === 0) {
+                    this.reqUser();
+                    this.$message.success('添加用户成功');
+                    this.resetUserForm();
+                    this.dialogVisible = 0;
+                    this.add_update_flag = '';
+                } else {
+                    this.$message.error(response.msg);
+                }
+            });
+        },
+        handleUpdateUser(row) {
+            //弹窗未打开时打开弹窗
+            if (this.dialogVisible === 0) {
+                this.dialogVisible = 1;
+                this.add_update_flag = 'update';
+                //将当前行的数据填入
+                this.selectedUserId = row._id;
+                this.userForm.username = row.username;
+                this.userForm.phone = row.phone;
+                this.userForm.email = row.email;
+                this.userForm.role_id = row.role_id;
+                return;
+            }
+            this.$refs.userForm.validate(async valid => {
+                if (!valid)
+                    return;
+                const response = await ajaxMtd('/manage/user/update', {
+                    _id: this.selectedUserId,
+                    username: this.userForm.username,
+                    phone: this.userForm.phone,
+                    email: this.userForm.email,
+                    role_id: this.userForm.role_id
+                }, 'POST');
+                if (response.status === 0) {
+                    this.reqUser();
+                    this.$message.success('修改用户成功');
+                    this.resetUserForm();
+                    this.dialogVisible = 0;
+                    this.add_update_flag = '';
+                    this.selectedUserId = '';
+                } else {
+                    this.$message.error(response.msg);
+                }
+            });
             this.dialogVisible = 0;
+            this.add_update_flag = '';
+        },
+        handleConfirmAddUpdate() {
+            if (this.add_update_flag === 'add') {
+                this.handleAddUser();
+            } else if (this.add_update_flag === 'update') {
+                this.handleUpdateUser();
+            }
         },
         hideDialog() {
             this.dialogVisible = 0;
+            this.add_update_flag = '';
+            this.resetUserForm();
         },
-        addUser() {
-            this.dialogVisible = 0;
-        }
+        resetUserForm() {
+            this.userForm = {
+                username: '',
+                password: '',
+                email: '',
+                phone: '',
+                role_id: '',
+            };
+            //修改userForm导致界面更新，更新后清楚表单项校验结果
+            nextTick(() => this.$refs.userForm.clearValidate());
+        },
+        validatePhone(rule, value, callback) {
+            if (value === '') {
+                callback(new Error('手机号不能为空'));
+            } else if (!/[0-9]/.test(value)) {
+                callback(new Error('手机号应只包含数字'));
+            } else if (value.length !== 11) {
+                callback(new Error('手机号长度应为11位'));
+            }
+            callback();
+        },
+        handleDeleteUser(row) {
+            this.$confirm('确认删除当前用户？', '提示', {
+                confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning'
+            }).then(async () => {
+                const response = await ajaxMtd('/manage/user/delete', {userId: row._id}, 'POST');
+                if (response.status === 0) {
+                    this.reqUser();
+                    this.$message.success('删除用户成功');
+                } else {
+                    this.$message.error(response.msg);
+                }
+            }).catch(() => {
+                //点击取消的回调
+            });
+        },
     },
     mounted() {
         this.reqUser();//组件挂载时请求数据
